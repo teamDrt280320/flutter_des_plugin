@@ -5,6 +5,8 @@ import 'package:des_plugin/des_plugin.dart';
 void main() {
   const MethodChannel channel = MethodChannel('des_plugin');
 
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
       return '42';

@@ -4,7 +4,9 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:des_plugin/des_plugin.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -12,15 +14,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String key = "iloveyou";
-  String data = "我爱你三千遍";
-
-  String encrypt = "";
-  String decrypt = "";
+  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    // We also handle the message potentially returning null.
+    try {
+      platformVersion =
+          await DesPlugin.platformVersion ?? 'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+    });
   }
 
   @override
@@ -30,31 +51,8 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-          children: <Widget>[
-            RaisedButton(
-              onPressed: (){
-                setState(() {
-                  DesPlugin.encrypt(key, data).then((result){
-                    encrypt = result;
-                  });
-                });
-              },
-              child: Text("des加密"),
-            ),
-            RaisedButton(
-              onPressed: (){
-                  DesPlugin.decrypt(key, encrypt).then((result){
-                    setState(() {
-                      decrypt = result;
-                    });
-                  });
-              },
-              child: Text("des解密"),
-            ),
-            Text("加密后的数据:" + encrypt),
-            Text("解密后的数据:" + decrypt),
-          ],
+        body: Center(
+          child: Text('Running on: $_platformVersion\n'),
         ),
       ),
     );
