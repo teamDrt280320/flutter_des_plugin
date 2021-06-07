@@ -1,4 +1,4 @@
-group 'com.teamdrt.des_plugin'
+group 'com.teamdrt.flutter_des_plugin'
 version '1.0-SNAPSHOT'
 
 buildscript {

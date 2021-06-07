@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  des_plugin:
+  flutter_des_plugin:
     # When depending on this package from a real application you should use:
     #   des_plugin: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

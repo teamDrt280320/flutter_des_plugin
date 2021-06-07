@@ -1,6 +1,6 @@
-name: des_plugin
+name: flutter_des_plugin
 description: A new flutter plugin project.
-version: 0.0.1
+version: 0.0.1+2
 homepage:
 
 environment:
@@ -27,9 +27,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.teamdrt.des_plugin
-        pluginClass: DesPlugin
-      ios:
+        package: com.teamdrt.flutter_des_plugin
         pluginClass: DesPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

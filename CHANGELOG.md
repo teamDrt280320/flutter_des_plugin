@@ -1,3 +1,7 @@
-## 0.0.1
+## 0.0.1+2
 
-* TODO: Describe initial release.
+* Fixed Plugin registration error
+
+## 0.0.1+1
+
+* Initial Release

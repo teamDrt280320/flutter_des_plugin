@@ -1,6 +1,6 @@
+import 'package:flutter_des_plugin/flutter_des_plugin.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:des_plugin/des_plugin.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('des_plugin');
